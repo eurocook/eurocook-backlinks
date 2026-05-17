@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eurocook Vietnam — Thiết Bị Bếp Châu Âu Cao Cấp</title>
+<meta name="description" content="Eurocook — Nhà phân phối chính thức Bosch, Siemens, Miele, Gaggenau, Liebherr, V-ZUG tại Việt Nam">
+<link rel="canonical" href="https://eurocook.vn">
+<style>
+body{font-family:Georgia,serif;max-width:820px;margin:40px auto;padding:0 24px;line-height:1.8;color:#1a1a1a}
+h1{color:#1a1a2e;border-bottom:2px solid #0057a8;padding-bottom:8px}
+h2{color:#1a1a2e;margin-top:32px}
+a{color:#0057a8;text-decoration:none}
+a:hover{text-decoration:underline}
+.brands{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.brand{padding:8px 16px;background:#f0f4ff;border:1px solid #ccd9f0;border-radius:6px;font-size:15px}
+.posts{list-style:none;padding:0}
+.posts li{padding:8px 0;border-bottom:1px solid #eee}
+.posts li:last-child{border-bottom:none}
+.date{color:#666;font-size:13px;margin-left:8px}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid #eee;color:#666;font-size:13px}
+</style>
+</head>
+<body>
+<h1>Eurocook Vietnam</h1>
+<p>Nhà phân phối chính thức thiết bị nhà bếp cao cấp châu Âu tại Việt Nam. Showroom tại TP.HCM.</p>
+<p>🌐 Website chính thức: <a href="https://eurocook.vn"><strong>eurocook.vn</strong></a></p>
+
+<h2>Thương hiệu phân phối</h2>
+<div class="brands">
+<div class="brand"><a href="https://eurocook.vn/bosch">🔴 Bosch</a></div>
+<div class="brand"><a href="https://eurocook.vn/siemens">🔵 Siemens</a></div>
+<div class="brand"><a href="https://eurocook.vn/miele">⚫ Miele</a></div>
+<div class="brand"><a href="https://eurocook.vn/gaggenau">⚫ Gaggenau</a></div>
+<div class="brand"><a href="https://eurocook.vn/liebherr">🔵 Liebherr</a></div>
+<div class="brand"><a href="https://eurocook.vn/v-zug">🟡 V-ZUG</a></div>
+</div>
+
+<h2>Bài viết mới nhất</h2>
+<ul class="posts" id="posts"><li>Đang tải...</li></ul>
+
+<footer>
+<p>Eurocook Vietnam | <a href="https://eurocook.vn">eurocook.vn</a> | TP. Hồ Chí Minh, Việt Nam</p>
+</footer>
+<script>
+fetch('posts/index.json').then(r=>r.json()).then(posts=>{
+  const ul=document.getElementById('posts');
+  ul.innerHTML='';
+  (posts||[]).slice(0,20).forEach(p=>{
+    const li=document.createElement('li');
+    li.innerHTML='<a href="posts/'+p.file+'">'+p.title+'</a><span class="date">'+p.date+'</span>';
+    ul.appendChild(li);
+  });
+  if(!posts||!posts.length) ul.innerHTML='<li>Chưa có bài viết</li>';
+}).catch(()=>{document.getElementById('posts').innerHTML='<li><a href="https://eurocook.vn">Xem tại eurocook.vn</a></li>';});
+</script>
+</body>
+</html>
